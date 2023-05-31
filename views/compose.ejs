@@ -1,0 +1,118 @@
+<%- include("partials/header")%>
+
+<h1>ADD DETAILS</h1>
+<form action="/compose" method="post">
+  <select name="item" class="form-select" aria-label="Default select example" required>
+    <option selected value="selected" > Select</option>
+    <option value="shirt">Shirt</option>
+    <option value="jeans">Jeans</option>
+    <option value="pants">Pants</option>
+    <option value="tshirt">T-Shirt</option>
+  </select>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Image 1</label>
+    <input type="text" name="Image1" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Image 2</label>
+    <input type="text" name="Image2" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+  </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Heading</label>
+        <input type="text" name="heading" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Content</label>
+        <input type="text" name="Content" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Price</label>
+        <input type="text" name="Price" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+      </div>
+      <!--  -->
+      <div class="form-group">
+        <label for="exampleInputEmail1">Style Code</label>
+        <input type="text" name="StyleCode" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+      </div>
+      
+      <div class="form-group">
+        <label for="exampleInputEmail1">Fit</label>
+        <input type="text" name="Fit" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Brand</label>
+        <input type="text" name="Brand" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Pattern</label>
+        <input type="text" name="Pattern" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Color</label>
+        <input type="text" name="Color" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Material</label>
+        <input type="text" name="Material" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Product Description</label>
+        <textarea type="text" name="description" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ></textarea>
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<%- include("partials/footer")%>
+
+<style>
+h1{
+  margin-top: 3.5%;
+  margin-left: 2%;
+}
+
+select{
+  margin-top: 2%;
+  margin-left: 2%;
+  outline-style:solid;
+  outline-color: rgb(92, 84, 84);
+  padding-right: 50px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+}
+
+.form-group{
+  margin-top: 2%;
+  margin-left: 2%;
+  margin-right: 5%;
+}
+
+input{
+  outline-style:solid;
+  outline-color: rgb(92, 84, 84);
+}
+
+label{
+  font-weight: bold;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+textarea{
+  outline-style:solid;
+  outline-color: rgb(92, 84, 84);
+}
+
+button{
+  margin-top: 2%;
+  margin-left: 2%;
+}
+
+.btn{
+  margin-bottom: 50px;
+  margin-left: 45%;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+
+</style>

@@ -1,0 +1,270 @@
+
+<%- include("partials/header")%>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingOne">
+        <button class="accordion-button <%=collapsed1%>" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" <%=status%> >
+          DETAILS
+        </button>
+      </h2>
+      <div id="flush-collapseOne" class="accordion-collapse collapse <%show1%>" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+        <form action="/checkout" method="post">
+        <div class="accordion-body">
+            <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Email</label>
+                <input type="email" class="form-control" id="inputEmail4" name="email">
+            </div>
+        </div>
+        <div class="accordion-body">
+            <div class="col-12">
+                <label for="inputAddress" class="form-label" >Address 1</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="House No" name="HouseNo">
+              </div>
+        </div>
+        <div class="accordion-body">
+            <div class="col-12">
+                <label for="inputAddress2" class="form-label" >Address 2</label>
+                <input type="text" class="form-control" id="inputAddress2" placeholder="Landmark" name="Landmark">
+              </div>
+        </div>
+        <div class="accordion-body">
+            <div class="col-md-6">
+                <label for="inputCity" class="form-label" >City</label>
+                <input type="text" class="form-control" id="inputCity" name="City">
+              </div>
+        </div>
+        <div class="accordion-body">
+            <div class="col-md-4">
+                <label for="inputState" class="form-label" >State: </label>
+                <select id="inputState" class="form-select" name="State">
+                  <option selected>Choose...</option>
+                  <option value="Andhra Pradesh">Andhra Pradesh</option>
+                  <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                  <option value="Assam">Assam</option>
+                  <option value="Bihar">Bihar</option>
+                  <option value="Chhattisgarh">Chhattisgarh</option>
+                  <option value="Goa">Goa</option>
+                  <option value="Gujarat">Gujarat</option>
+                  <option value="Haryana">Haryana</option>
+                  <option value="Himachal Pradesh">Himachal Pradesh</option>
+                  <option value="Jharkand">Jharkand</option>
+                  <option value="Karnataka">Karnataka</option>
+                  <option value="Kerala">Kerala</option>
+                  <option value="Madhya Pradesh">Madhya Pradesh</option>
+                  <option value="Maharashtra">Maharashtra</option>
+                  <option value="Manipur">Manipur</option>
+                  <option value="Meghalaya">Meghalaya</option>
+                  <option value="Mizoram">Mizoram</option>
+                  <option value="Nagaland">Nagaland</option>
+                  <option value="Odisha">Odisha</option>
+                  <option value="Punjab">Punjab</option>
+                  <option value="Rajasthan">Rajasthan</option>
+                  <option value="Sikkim">Sikkim</option>
+                  <option value="Tamil Nadu">Tamil Nadu</option>
+                  <option value="Telegana">Telegana</option>
+                  <option value="Tripura">Tripura</option>
+                  <option value="Uttarakhand">Uttarakhand</option>
+                  <option value="Uttar Pradesh">Uttar Pradesh</option>
+                  <option value="West Bengal">West Bengal</option>
+                </select>
+              </div>
+        </div>
+        <div class="accordion-body">
+            <div class="col-md-2">
+                <label for="inputZip" class="form-label">Pincode</label>
+                <input type="number" class="form-control pincode" id="inputZip" name="Pincode">
+              </div>
+        </div>
+        <div class="accordion-body">
+          <div class="col-md-2">
+              <label for="inputZip" class="form-label">Phone No</label>
+              <input type="number" class="form-control phoneno" id="inputZip" name="PhoneNo">
+            </div>
+      </div>
+        <div class="accordion-body">
+            <div class="col-12">
+              <form>
+                <button type="submit" class="btn btn-primary" onclick="goto2Accordion()">Continue</button>
+              </form>
+              </div>
+        </div>
+        </form>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingTwo">
+        <button class="accordion-button <%=collapsed%>" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+          PAYMENT
+        </button>
+      </h2>
+      <div id="flush-collapseTwo" class="accordion-collapse collapse <%=show%>" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onclick="check()">
+            <label class="form-check-label" for="flexRadioDefault1">
+              PAY NOW
+              <h6 style="visibility: hidden;" id=<%=price%> ></h6>
+            </label>
+          </div>
+        </div>
+        <div class="accordion-body">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onclick="gotoOrderPlaced()">
+            <label class="form-check-label" for="flexRadioDefault2">
+              CASH ON DELIVERY
+            </label>
+          </div>
+        </div>
+        <br>
+        <button class="btn-primary" id="rzp-button1">PROCEED</button>
+      </div>
+    </div>
+  </div>
+  
+
+<link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<!-- Favicons -->
+<link rel="apple-touch-icon" href="/docs/5.0/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/docs/5.0/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/docs/5.0/assets/img/favicons/safari-pinned-tab.svg" color="#7952b3">
+<link rel="icon" href="/docs/5.0/assets/img/favicons/favicon.ico">
+<meta name="theme-color" content="#7952b3">
+
+
+
+<script>
+  let costAmount = document.getElementsByTagName("h6")[0].id;
+  function gotoOrderPlaced(){
+    var checkBox = document.getElementById("flexRadioDefault2")
+    if(checkBox.checked){
+      document.getElementById('rzp-button1').onclick = function (e) {
+            window.location.href = "/OrderPlaced"
+        }
+        
+    
+  }}
+  function check(){
+    var checkBox = document.getElementById("flexRadioDefault1")
+    if(checkBox.checked){
+      //  
+      var orderId;
+     $(document).ready(function () {
+        var settings = {
+            "url": "/create/orderId",
+            "method": "POST",
+            "timeout": 0,
+            "headers": {
+                "Content-Type": "application/json"
+                
+            },
+            "data": JSON.stringify({
+                "amount": String(costAmount*100)
+            }),
+        };
+
+        //creates new orderId everytime
+        $.ajax(settings).done(function (response) {
+
+            orderId = response.orderId;
+            console.log(orderId);
+            $("button").show();
+        });
+    });
+
+    document.getElementById('rzp-button1').onclick = function (e) {
+        var options = {
+            "key": "rzp_test_8ZDwkElu5zWD8p", // Enter the Key ID generated from the Dashboard
+            "amount": String(costAmount*100), // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+            "currency": "INR",
+            "name": "LEMEN GRAS",
+            "image": "https://drive.google.com/file/d/1nr7HP9x1EOCoa3o0DDMoxXfnmled38Kb/view?usp=sharing",
+            "order_id": orderId, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+            "handler": function (response) {
+                window.location.href = "/orderPlaced"
+                var settings = {
+                    "url": "/api/payment/verify",
+                    "method": "POST",
+                    "timeout": 0,
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "data": JSON.stringify({response}),
+                }
+
+                //creates new orderId everytime
+                $.ajax(settings).done(function (response){
+                });
+               },
+           "theme": {
+                "color": "#292b2c"
+            }
+        };
+        
+        var rzp1 = new Razorpay(options);
+
+        rzp1.open();
+        e.preventDefault();
+        
+    }
+
+
+
+    }
+      
+  }
+</script>
+
+
+
+<style>
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+.pincode{
+  width: 200px;
+}
+.phoneno{
+  width: 200px;
+}
+  .accordion-item{
+    width: 50%;
+    margin-left: 25%;
+  }
+  label{
+    margin-top: 15px;
+  }
+  .btn{
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .form-check-input{
+      margin-top: 3%;
+  }
+  .form-check-label{
+    margin-left: 20px;
+  }
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+</style>

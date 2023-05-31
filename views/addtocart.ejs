@@ -1,0 +1,50 @@
+<%- include("partials/header")%>
+
+<h1 class="title-heading">CART</h1>
+<div class="row row-addtocart">
+  <% for(var i=0; i<newCartArray.length;i++) { %>
+    <div class="card card-addtocart col-lg-3 col-md-6 col-sm-12">
+      <div class="card" style="width: 18rem;">
+        <img src=<%=newCartArray[i].image1%> class="card-img-top image-addtocart" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%=newCartArray[i].heading%></h5>
+          <p class="card-text"><%=newCartArray[i].content%></p>
+        </div>
+        <ul class="list-group list-group-flush price-addtocart">
+            <li class="list-group-item"><b>₹<%=newCartArray[i].price%></b></li>
+        </ul>
+      </div>
+      </div>
+      <% } %>
+
+</div>
+<div class="footer">
+  <button class="btn-light btn">BUY NOW</button>
+</div>
+
+<style>
+  .footer{
+    margin-top: 38%;
+    z-index: 1;
+    background-color: rgb(42, 42, 84);
+    height: 5rem;
+    width: 100%;
+    border-top: 5px;
+    position: fixed;
+    bottom: -10px;
+  }
+  .card{
+    z-index: -1;
+  }
+  .btn{
+    margin-left: 87%;
+    position: relative;
+    top: 18px;
+    padding: 5px 25px;
+
+  }
+  .row{
+    margin-left: 80px;
+    margin-bottom: 50px;
+  }
+</style>
